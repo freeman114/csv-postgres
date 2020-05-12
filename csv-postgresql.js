@@ -2,7 +2,7 @@ const fs = require("fs");
 const Pool = require("pg").Pool;
 const fastcsv = require("fast-csv");
 
-let stream = fs.createReadStream("bezkoder.csv");
+let stream = fs.createReadStream("myjob.csv");
 let csvData = [];
 let csvStream = fastcsv
   .parse()
@@ -12,6 +12,7 @@ let csvStream = fastcsv
   .on("end", function() {
     // remove the first line: header
     csvData.shift();
+    console.log("query");
 
     // create a new connection to the database
     const pool = new Pool({
@@ -23,8 +24,7 @@ let csvStream = fastcsv
     });
 
     const query =
-      "INSERT INTO category (id, name, description, created_at) VALUES ($1, $2, $3, $4)";
-
+      "INSERT INTO category (InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
     pool.connect((err, client, done) => {
       if (err) throw err;
 

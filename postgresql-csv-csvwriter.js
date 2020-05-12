@@ -27,9 +27,14 @@ pool.connect((err, client, done) => {
         path: "bezkoder_postgresql_csvWriter.csv",
         header: [
           { id: "id", title: "id" },
-          { id: "name", title: "name" },
-          { id: "description", title: "description" },
-          { id: "created_at", title: "created_at" }
+          { id: "InvoiceNo", title: "InvoiceNo" },
+          { id: "StockCode", title: "StockCode" },
+          { id: "Description", title: "Description" },
+          { id: "Quantity", title: "Quantity" },
+          { id: "InvoiceDate", title: "InvoiceDate" },
+          { id: "UnitPrice", title: "UnitPrice" },
+          { id: "CustomerID", title: "CustomerID" },
+          { id: "Country", title: "Country" }
         ]
       });
 
