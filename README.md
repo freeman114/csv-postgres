@@ -12,6 +12,7 @@ npm install
 
 ### Run
 ```
+node app.js
 node csv-postgresql.js
 node postgresql-csv-fs.js
 node postgresql-csv-fastcsv.js

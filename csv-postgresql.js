@@ -23,6 +23,7 @@ let csvStream = fastcsv
       port: 5432
     });
 
+    console.log(csvData);
     const query =
       "INSERT INTO category (InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
     pool.connect((err, client, done) => {
@@ -30,11 +31,12 @@ let csvStream = fastcsv
 
       try {
         csvData.forEach(row => {
+          console.log(row);
           client.query(query, row, (err, res) => {
             if (err) {
               console.log(err.stack);
             } else {
-              console.log("inserted " + res.rowCount + " row:", row);
+              //console.log("inserted " + res.rowCount + " row:", row);
             }
           });
         });
